@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MainPage</title>
+</head>
+<body>
+
+<form action="/">
+    <label name="input_orderId">Uid</label>
+    <input
+            type="text"
+            name="orderUid"
+            placeholder="Enter your order uid"
+            required
+    />
+    <button type="submit">Ввод</button>
+</form>
+<br><br>
+
+{{if .Ok}}
+<div style="text-align: center;"><strong>Selected Uid:</strong> {{.Info.OrderUid}}</div>
+<br>
+<div style="margin-left:20px;">
+    OrderUid    <i>{{.Info.OrderUid}} </i>      <br>
+    TrackNumber <i>{{.Info.TrackNumber}} </i>  <br>
+    Entry       <i>{{.Info.Entry}}</i> <br>
+    <h4>Delivery</h4>
+    <div style="margin-left:20px;">
+        Name    <i>{{.Info.Delivery.Name}}</i><br>
+        Phone   <i>{{.Info.Delivery.Phone}}</i><br>
+        Zip     <i>{{.Info.Delivery.Zip}}</i><br>
+        City    <i>{{.Info.Delivery.City}}</i><br>
+        Address <i>{{.Info.Delivery.Address}}</i><br>
+        Region  <i>{{.Info.Delivery.Region}}</i><br>
+        Email   <i>{{.Info.Delivery.Email}}</i><br>
+    </div>
+    <h4>Payment</h4>
+    <div style="margin-left:20px;">
+        Transaction  <i>{{.Info.Payment.Transaction}}</i><br>
+        RequestId    <i>{{.Info.Payment.RequestId}}</i><br>
+        Currency     <i>{{.Info.Payment.Currency}}</i><br>
+        Provider     <i>{{.Info.Payment.Provider}}</i><br>
+        Amount       <i>{{.Info.Payment.Amount}}</i><br>
+        PaymentDt    <i>{{.Info.Payment.PaymentDt}}</i><br>
+        Bank         <i>{{.Info.Payment.Bank}}</i><br>
+        DeliveryCost <i>{{.Info.Payment.DeliveryCost}}</i><br>
+        GoodsTotal   <i>{{.Info.Payment.GoodsTotal}}</i><br>
+        CustomFee    <i>{{.Info.Payment.CustomFee}}</i><br>
+    </div>
+    <h4>Items</h4>
+    <div style="margin-left:20px;">
+        {{range .Info.Items}}
+        ChrtId      <i>{{.ChrtId}}</i><br>
+        TrackNumber <i>{{.TrackNumber}}</i><br>
+        Price       <i>{{.Price}}</i><br>
+        Rid         <i>{{.Rid}}</i><br>
+        Name        <i>{{.Name}}</i><br>
+        Sale        <i>{{.Sale}}</i><br>
+        Size        <i>{{.Size}}</i><br>
+        TotalPrice  <i>{{.TotalPrice}}</i><br>
+        NmId        <i>{{.NmId}}</i><br>
+        Brand       <i>{{.Brand}}</i><br>
+        Status      <i>{{.Status}}</i><br>
+        <br>
+        {{end}}
+    </div>
+    Locale            <i>{{.Info.Locale}}</i><br>
+    InternalSignature <i>{{.Info.InternalSignature}}</i><br>
+    CustomerId        <i>{{.Info.CustomerId}}</i><br>
+    DeliveryService   <i>{{.Info.DeliveryService}}</i><br>
+    Shardkey          <i>{{.Info.Shardkey}}</i><br>
+    SmId              <i>{{.Info.SmId}}</i><br>
+    DateCreated       <i>{{.Info.DateCreated}}</i><br>
+    OofShard          <i>{{.Info.OofShard}}</i><br>
+    <br>
+
+</div>
+{{else}}
+<div style="margin-left:20px;">
+    Данные введены некорректно или отсутствуют
+</div>
+
+{{end}}
+</body>
+</html>
